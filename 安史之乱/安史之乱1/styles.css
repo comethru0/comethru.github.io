@@ -434,7 +434,7 @@ blockquote cite {
     border-radius: 10px;
     font-size: 1.05rem;
     line-height: 1.8;
-    text-align: center;
+    text-align: left;
     border-bottom: 2px dashed var(--border-color);
 }
 
@@ -519,7 +519,16 @@ blockquote cite {
 
 .timeline-item .year {
     font-weight: bold;
-    display: block;
+    display: inline-block;
+    white-space: nowrap;        /* 防止换行 */  
+    font-size: 0.8em;
+    margin-bottom: 5px;
+}
+.timeline-item .label {
+    font-weight: bold;
+    display: inline-block;
+    white-space: nowrap;        /* 防止换行 */  
+    font-size: 1.0em;
     margin-bottom: 5px;
 }
 
@@ -655,24 +664,29 @@ blockquote cite {
 }
 
 .tree-node {
-    padding: 25px;  /* 增加内边距，增加空白 */
+    padding: 20px;
     border-radius: 10px;
     background-color: white;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--border-color);
     height: 100%;
-    display: flex;
-    justify-content: center;  /* 居中内容 */
-    align-items: center;      /* 垂直居中 */
-    text-align: center;       /* 让文本居中 */
 }
 
-.tree-node p {
+.tree-node h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.tree-node h2 {
     font-size: 1.3rem;  /* 稍微增大字体 */
     font-weight: 500;   /* 加粗字体 */
+    text-align: center;
     margin: 0;          /* 去除默认边距 */
     line-height: 1.6;   /* 调整行高 */
 }
+
+
 .data-comparison {
     margin-top: 60px;
 }
