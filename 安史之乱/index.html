@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安史之乱 - 唐王朝的转折点</title>
+    <!-- 引入CSS重置库 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css">
+    <!-- 引入Font Awesome图标 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <!-- 引入Google字体 - 思源宋体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- 引入AOS动画库 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <!-- 引入Swiper轮播库 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 页面加载动画 -->
+    <div class="loading-screen">
+        <div class="loading-content">
+            <p>古韵正在展开...</p>
+        </div>
+    </div>
+
+    <!-- 顶部导航 - 卷轴式设计 -->
+    <nav class="scroll-nav">
+        <div class="nav-content">
+            <div class="logo">安史之乱</div>
+            <ul class="nav-links">
+                <li><a href="#overview" class="nav-link">战争概况</a></li>
+                <li><a href="#causes" class="nav-link">战争缘由</a></li>
+                <li><a href="#process" class="nav-link">战争过程</a></li>
+                <li><a href="#impacts" class="nav-link">战争影响</a></li>
+                <li><a href="#dufu" class="nav-link">杜甫与安史之乱</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 头部 - 背景大图 -->
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1 class="site-title">安史之乱：唐王朝的转折点</h1>
+            <p class="hero-subtitle">公元755年至763年，一场改变唐王朝命运的战争</p>
+            <div class="scroll-indicator">
+                <span>向下滚动探索历史</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="main-content">
+        <!-- 战争概况 -->
+        <section id="overview" class="section overview-section">
+            <div class="section-container">
+                <h2 class="section-title" data-aos="fade-right">战争概况</h2>
+                <div class="section-content" data-aos="fade-up">
+                    <div class="overview-intro">
+                        <p>安史之乱是唐朝历史上一场具有转折意义的战争，标志着唐朝由盛转衰。这场叛乱由范阳节度使安禄山发动，后由其子安庆绪和部将史思明继续领导，故称"安史之乱"。战争持续八年之久，造成唐朝人口锐减、经济崩溃、中央政府权威下降、藩镇割据局面形成，是中国历史上规模最大、影响最深远的内乱之一。</p>
+                    </div>
+                    <div class="overview-grid">
+                        <div class="overview-card region">
+                            <h3>区域</h3>
+                            <p>战争波及今河北、河南、山东、陕西等广大地区，唐朝两京（长安、洛阳）均被攻陷。</p>
+                        </div>
+                        <div class="overview-card parties">
+                            <h3>参战方</h3>
+                            <p>叛军：安禄山、史思明等人领导的反叛军队<br>
+                               官军：以唐朝政府军为主，包括回纥、吐蕃等外族援军</p>
+                        </div>
+                    </div>
+                    <div class="quote-block">
+                        <blockquote>
+                            "天宝十四载十一月，安禄山反于范阳。十五载六月，陷两京。至德元载，肃宗即位灵武，十一月，收长安。二载四月，收洛阳。上皇还京师。乾元元年，史思明复反。三年，禄山子庆绪杀其父。广德元年二月，庆绪死，范阳平，贼平。凡八年而后已。"
+                            <cite>——《资治通鉴》</cite>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 战争缘由 -->
+        <section id="causes" class="section causes-section">
+            <div class="section-container">
+                <h2 class="section-title" data-aos="fade-right">战争缘由</h2>
+                <div class="section-content" data-aos="fade-up">
+                    <div class="causes-intro">
+                        <p>安史之乱的爆发并非偶然，而是唐朝中后期各种社会矛盾积累的必然结果。这场叛乱的根源深植于唐朝社会经济制度的变革、政治结构的失衡以及统治阶级的内部矛盾等多方面因素。</p>
+                    </div>
+                    <div class="causes-items">
+                        <div class="cause-item">
+                            <h3>均田崩溃与贫富分化</h3>
+                            <p>唐朝初期实行的均田制在开元时期已经名存实亡。人口增长、土地兼并、官员占有大量土地等因素导致无地可分，均田制逐渐崩溃。《新唐书》记载："自开元以后，天下户籍久不更造，丁中转死，田亩卖易，贫富升降不实。"</p>
+                            <p>土地兼并加剧使大量农民沦为佃户，"富者田连阡陌，贫者无立锥之地"。社会矛盾日益尖锐，贫富差距扩大，成为安史之乱爆发的重要社会基础。</p>
+                        </div>
+                        <div class="cause-item">
+                            <h3>府兵废弛与节度使坐大</h3>
+                            <p>均田制的瓦解直接导致了建立在其基础上的府兵制崩溃。天宝八年（749年），折冲府已"无兵可交"，政府不得不废除府兵制，改行募兵制。</p>
+                            <p>募兵制下的士兵成为职业军人，节度使统领大量军队并掌握着地方行政权力。安禄山兼领范阳、平卢、河东三镇，控制了约15万大军，占唐军总数近三分之一，形成了"府兵法坏，而方镇盛"的外重内轻格局，为其叛乱创造了军事条件。</p>
+                        </div>
+                        <div class="cause-item">
+                            <h3>军事部署失衡</h3>
+                            <p>唐朝前期边境战略合理，内重外轻，军府近半数集中于京师所在的关内道。但改行募兵制后，为应对边防需要，在沿边要地驻扎重兵。</p>
+                            <p>据记载，天宝元年全国军队57万余，其中边镇军队达49万，占5/6。猛将精兵聚集边疆，中央兵力空虚，战略布局失衡，为叛乱提供了可乘之机。</p>
+                            <p>同时，朝廷对少数民族政策失误，如重用非汉族将领掌握大量兵权，也为安史之乱埋下了隐患。</p>
+                        </div>
+                        <div class="cause-item">
+                            <h3>朝廷内部矛盾</h3>
+                            <p>唐玄宗晚年沉溺声色，荒怠政事，宠信杨贵妃及其亲族，为权臣专权提供了可能。先是奸相李林甫"在位十九年，养成天下大乱"，后是杨国忠勾心斗角取而代之。</p>
+                            <p>杨国忠与安禄山的矛盾日益激化，他多次上书告发安禄山，指使门客刺探安禄山，使其惶恐不安。最终，安禄山以讨伐杨国忠为名起兵造反，点燃了这场历史巨变的导火索。</p>
+                            <p>唐玄宗天宝年间的腐朽统治、朝廷内部的权力斗争是安史之乱爆发的直接政治原因。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 战争过程 -->
+        <section id="process" class="section process-section">
+            <div class="section-container">
+                <h2 class="section-title" data-aos="fade-right">战争过程</h2>
+                
+                <!-- 时间轴导航 -->
+                <div class="timeline-nav" data-aos="fade-up">
+                    <div class="timeline-item active" data-target="stage1">
+                        <span class="year">755-756年初</span>
+                        <span class="label">安禄山起兵</span>
+                    </div>
+                    <div class="timeline-item" data-target="stage2">
+                        <span class="year">756年中</span>
+                        <span class="label">长安陷落</span>
+                    </div>
+                    <div class="timeline-item" data-target="stage3">
+                        <span class="year">757-759年</span>
+                        <span class="label">唐军反攻</span>
+                    </div>
+                    <div class="timeline-item" data-target="stage4">
+                        <span class="year">760-763年</span>
+                        <span class="label">战争结束</span>
+                    </div>
+                </div>
+
+                <!-- 时间轴内容 -->
+                <div class="timeline-content" data-aos="fade-up">
+                    <!-- 阶段一：安禄山起兵 -->
+                    <div id="stage1" class="timeline-stage active">
+                        <h3 class="stage-title">安禄山起兵阶段<br>（755年11月-756年初）</h3>
+                        
+                        <div class="event-grid">
+                            <div class="event-item">
+                                <h4>起兵前夕</h4>
+                                <p>安禄山掌控范阳、平卢、河东三镇，兵力约15万。他与宰相杨国忠矛盾激化，杨国忠多次在唐玄宗面前进谗言，安禄山倍感危机，加速了叛乱准备。</p>
+                                <div class="event-date">755年初-11月</div>
+                            </div>
+                            
+                            <div class="event-item">
+                                <h4>叛军起事</h4>
+                                <p>755年11月16日，安禄山联合同罗、奚、契丹等民族组成大军，在范阳誓师起兵，打出"奉密诏讨伐杨国忠"的旗号。安禄山自称"平尘侯大将军"，以清君侧为名行造反之实。</p>
+                                <div class="event-date">755年11月16日</div>
+                            </div>
+                            
+                            <div class="event-item">
+                                <h4>首战告捷</h4>
+                                <p>叛军首先攻破常山（今河北正定），太守颜杲卿拒降被杀。常山失守后，防线崩溃，叛军势如破竹进入河北腹地。唐廷反应迟缓，任命封常清率军东征抵御叛乱。</p>
+                                <div class="event-date">755年11月-12月</div>
+                            </div>
+                            
+                            <div class="event-item">
+                                <h4>洛阳陷落</h4>
+                                <p>756年1月，安禄山率军突破唐军防线，兵临洛阳城下。洛阳守将卢崇道率军殊死抵抗，最终力战而亡。1月15日洛阳陷落，安禄山入主东都，并在2月5日正式僭称"大燕皇帝"，建立政权与唐朝对抗。</p>
+                                <div class="event-date">756年1月-2月</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 阶段二：长安陷落 -->
+                    <div id="stage2" class="timeline-stage">
+                        <h3 class="stage-title">长安陷落阶段<br>（756年中期）</h3>
+                        
+                        <div class="event-grid">
+                            <div class="event-item">
+                                <h4>潼关之战</h4>
+                                <p>756年6月，叛军在攻占洛阳后，安禄山派遣大将史思明、崔乾祐等率军西进，直指长安。唐朝派遣哥舒翰率军15万镇守潼关，成为长安的最后屏障。</p>
+                                <p>7月7日，战况激烈，哥舒翰军中有内应，唐军溃败，哥舒翰被俘，潼关失守，长安门户洞开。此战是安史之乱中最关键的一战。</p>
+                                <div class="event-date">756年6月-7月7日</div>
+                            </div>
+                            
+                            <div class="event-item">
+                                <h4>长安沦陷</h4>
+                                <p>潼关失守后，唐玄宗被迫决定逃往四川。7月14日，安禄山部将崔乾祐、仆固怀恩率军入主长安，叛军大肆屠杀抵抗者，抢掠财物，烧毁宫殿，长安城遭受严重破坏。</p>
+                                <div class="event-date">756年7月14日</div>
+                            </div>
+                            
+                            <div class="event-item">
+                                <h4>马嵬坡事件</h4>
+                                <p>7月15日，唐玄宗与杨贵妃、杨国忠等人逃至马嵬坡，途中禁军将士哗变，指责杨国忠卖国误国。龙武大将军陈玄礼率兵逼宫，要求处死杨国忠。杨国忠及其亲族当场被杀，为平息兵变，杨贵妃也被缢死于普救寺，年仅38岁。</p>
+                                <div class="event-date">756年7月15日</div>
+                            </div>
+                            
+                            <div class="event-item">
+                                <h4>肃宗即位</h4>
+                                <p>7月12日，太子李亨在灵武即位，是为唐肃宗。唐玄宗抵达成都后，被尊为太上皇。唐朝出现了两京沦陷，中央政府流亡的分裂局面。肃宗任命郭子仪为陕西、河东节度使，开始了反击安史叛军的准备。</p>
+                                <div class="event-date">756年7月-8月</div>
+                            </div>
+                        </div>
+                        
+                        <div class="historical-figure">
+                            <div class="figure-image">
+                                <img src="images/唐玄宗图像.jpg" alt="唐玄宗像">
+                            </div>
+                            <div class="figure-desc">
+                                <h4>悲情皇帝：唐玄宗</h4>
+                                <p>曾创造开元盛世的明君，晚年沉溺声色，导致国家危亡，在马嵬坡痛失爱妃，成为中国历史上最具悲剧色彩的帝王之一。自马嵬坡事件后，玄宗心灰意冷，终日思念杨贵妃，成就了一段千古绝唱的爱情悲剧。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 阶段三：唐军反攻 -->
+                    <div id="stage3" class="timeline-stage">
+                        <h3 class="stage-title">唐军反攻阶段<br>（757年-759年）</h3>
+                        
+                        <div class="event-grid">
+                            <div class="event-item">
+                                <h4>安禄山之死</h4>
+                                <p>757年2月，安禄山因肥胖多病，变得暴虐多疑。其子安庆绪与宦官李猪儿合谋，在其卧室将其杀害。安庆绪继承其父位置，自称"燕帝"，继续与唐朝对抗。安禄山之死为唐军反攻创造了条件。</p>
+                                <div class="event-date">757年2月</div>
+                            </div>
+                            
+                            <div class="event-item">
+                                <h4>清渠关之战</h4>
+                                <p>757年3月，郭子仪率军在陕西同州与史思明大战于清渠关，大破叛军。该战役是唐军第一次大规模反攻取胜，极大振奋了唐军士气，为后续反攻打下基础。</p>
+                                <div class="event-date">757年3月</div>
+                            </div>
+                            
+                            <div class="event-item">
+                                <h4>收复两京</h4>
+                                <p>757年9月，郭子仪联合回纥大军在灵宝附近大破叛军，随后收复长安。唐肃宗回銮，朝廷重新入主长安。紧接着，唐军于10月收复洛阳。至此，唐朝实现了战略反转，两京重归唐室掌控。</p>
+                                <div class="event-date">757年9月-10月</div>
+                            </div>
+                            
+                            <div class="event-item">
+                                <h4>史思明诈降</h4>
+                                <p>758年底，李光弼在邺城围困史思明。史思明被困后向唐朝投降，被封为归义王。但不久后，史思明得知唐廷有意除掉他，于759年初倒戈再叛，与安庆绪联合，再次壮大叛军实力。</p>
+                                <div class="event-date">758年-759年</div>
+                            </div>
+                        </div>
+                        
+                        <div class="historical-figure">
+                            <div class="figure-image">
+                                <img src="images/郭子仪图像.jpg" alt="郭子仪像">
+                            </div>
+                            <div class="figure-desc">
+                                <h4>中兴名将：郭子仪</h4>
+                                <p>安史之乱中唐朝最重要的将领，军事才能出众。郭子仪六次受命为元帅，先后平定安史之乱和吐蕃入侵，被后人尊为"郭令公"，是唐朝中兴的重要功臣，为唐朝的复兴做出了巨大贡献。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 阶段四：战争结束 -->
+                    <div id="stage4" class="timeline-stage">
+                        <h3 class="stage-title">战争胶着与结束阶段<br>（760年-763年）</h3>
+                        
+                        <div class="event-grid">
+                            <div class="event-item">
+                                <h4>安庆绪之死</h4>
+                                <p>759年底，史思明率军援助被围困的安庆绪，大败唐军。但759年12月，史思明亲手杀害安庆绪，完全掌控叛军。760年初，史思明自称"大燕皇帝"，改元"顺天"，重建叛军政权。</p>
+                                <div class="event-date">759年12月-760年</div>
+                            </div>
+                            
+                            <div class="event-item">
+                                <h4>史思明被杀</h4>
+                                <p>761年4月，史思明在与其子史朝义争权时，被史朝义派人刺杀。弑父的史朝义接管叛军，继续与唐朝对抗。史思明之死导致叛军内部开始分化，唐军借此机会，在河北战场上开始反击。</p>
+                                <div class="event-date">761年4月</div>
+                            </div>
+                            
+                            <div class="event-item">
+                                <h4>唐军决战</h4>
+                                <p>762年，唐军在河北战场连续取得胜利，攻克相州、魏州、博州等重要城市。唐军还获得了回纥军队的支援，形成了对叛军的全面包围。与此同时，史朝义军中不断有将领投降，叛军军心涣散。</p>
+                                <div class="event-date">762年</div>
+                            </div>
+                            
+                            <div class="event-item">
+                                <h4>战争结束</h4>
+                                <p>763年初，史朝义部下大将李怀仙和田承嗣先后投降。2月17日，史朝义在林中自缢身亡，历时七年多的安史之乱终于结束。然而，为维持和平，唐朝大量启用降将为节度使，如田承嗣为魏博节度使，这为后来的藩镇割据埋下了祸根。</p>
+                                <div class="event-date">763年2月17日</div>
+                            </div>
+                        </div>
+                        
+                        <div class="war-conclusion">
+                            <h4>战争结局</h4>
+                            <p>安史之乱历时八年，唐朝虽然平定了叛乱，但付出了惨重代价：人口由八千多万锐减至约五千万，华北地区生产力遭受毁灭性打击，中央政府权威大幅下降。藩镇割据局面已不可逆转，唐朝由此从盛世走向衰落。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 战争影响 -->
+        <section id="impacts" class="section impacts-section">
+            <div class="section-container">
+                <h2 class="section-title" data-aos="fade-right">战争影响</h2>
+                <div class="section-content" data-aos="fade-up">
+                    <div class="impacts-tree">
+                        <div class="tree-center">
+                            <div class="tree-node main-node">
+                                <h2>唐朝由盛转衰的</h2>
+                                <h2>历史分水岭</h2>
+                            </div>
+                        </div>
+                        <div class="tree-branches">
+                            <div class="branch-item">
+                                <div class="tree-node">
+                                    <h3>政治体系崩溃</h3>
+                                    <p>中央政府权威严重下降，为平叛而大量任用降将为节度使，形成藩镇割据局面。</p>
+                                    <p>河朔三镇（范阳、成德、魏博）表面臣服于唐室，实际割据一方，唐帝国陷入分裂状态。</p>
+                                </div>
+                            </div>
+                            <div class="branch-item">
+                                <div class="tree-node">
+                                    <h3>经济重创</h3>
+                                    <p>战争蹂躏了唐朝人口稠密和经济发达区域，北方经济遭到毁灭性打击。</p>
+                                    <p>国家财政收入从两税八百万贯锐减至三百万贯，均田制彻底崩溃，大土地所有制兴起。</p>
+                                </div>
+                            </div>
+                            <div class="branch-item">
+                                <div class="tree-node">
+                                    <h3>社会动荡</h3>
+                                    <p>人口由八千万锐减至五千万，大量中原人口南迁，造成"千里萧条"。</p>
+                                    <p>战后唐朝对胡人态度转为排斥，爆发大规模排胡运动，社会风气趋于保守。</p>
+                                </div>
+                            </div>
+                            <div class="branch-item">
+                                <div class="tree-node">
+                                    <h3>边防瓦解</h3>
+                                    <p>唐朝为平叛向外族借兵，使外族得以干预内政，唐朝"天可汗"声威大减。</p>
+                                    <p>吐蕃占领河西走廊和西域，唐朝失去对西部控制，陆上丝绸之路中断。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="data-comparison">
+                        <h3>战前战后对比</h3>
+                        <div class="comparison-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>指标</th>
+                                        <th>安史之乱前</th>
+                                        <th>安史之乱后</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>人口数量</td>
+                                        <td>约8000万</td>
+                                        <td>约5000万</td>
+                                    </tr>
+                                    <tr>
+                                        <td>国家财政</td>
+                                        <td>两税八百万贯</td>
+                                        <td>两税三百万贯</td>
+                                    </tr>
+                                    <tr>
+                                        <td>土地制度</td>
+                                        <td>均田制为主</td>
+                                        <td>均田制崩溃，大土地所有制兴起</td>
+                                    </tr>
+                                    <tr>
+                                        <td>军事制度</td>
+                                        <td>府兵制为主</td>
+                                        <td>募兵制全面推行，节度使拥兵自重</td>
+                                    </tr>
+                                    <tr>
+                                        <td>政治格局</td>
+                                        <td>中央集权</td>
+                                        <td>藩镇割据</td>
+                                    </tr>
+                                    <tr>
+                                        <td>民族关系</td>
+                                        <td>开放包容</td>
+                                        <td>排外仇视</td>
+                                    </tr>
+                                    <tr>
+                                        <td>国际地位</td>
+                                        <td>"天可汗"威望显赫</td>
+                                        <td>外族入侵，边疆丧失</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="impact-quote">
+                            <blockquote>
+                                <p>"由是祸乱继起，兵革不息，民坠涂炭，无所控诉，凡二百余年。"</p>
+                                <cite>——司马光《资治通鉴》</cite>
+                            </blockquote>
+                            <p>安史之乱是中国中古时期的重要分水岭，它不仅改变了唐朝的政治走向，也对此后的中国历史产生了深远影响。唐朝虽然勉强维持了近150年，但国势日衰，再也无法恢复昔日辉煌。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 杜甫与安史之乱 -->
+        <section id="dufu" class="section dufu-section">
+            <div class="section-container">
+                <h2 class="section-title" data-aos="fade-right">杜甫与安史之乱</h2>
+                <div class="section-content" data-aos="fade-up">
+                    <div class="dufu-scroll">
+                        <div class="dufu-intro">
+                            <div class="dufu-portrait">
+                                <img src="images/杜甫图像.png" alt="杜甫像">
+                            </div>
+                            <div class="dufu-bio">
+                                <h3>诗圣杜甫</h3>
+                                <p>杜甫（712年-770年），字子美，自号少陵野老，唐代伟大的现实主义诗人，与李白合称"李杜"。安史之乱成为其人生与创作的重要转折点，不仅使他经历了长期颠沛流离的生活，也使其诗歌风格由此完成从浪漫主义向现实主义的转变，形成了"沉郁顿挫"的独特风格，被后世誉为"诗圣"。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="dufu-exile">
+                            <h3>逃亡生涯与仕途挫折</h3>
+                            <div class="exile-timeline">
+                                <div class="exile-event">
+                                    <div class="event-year">755年</div>
+                                    <div class="event-content">
+                                        <h4>战乱初逃</h4>
+                                        <p>安史之乱爆发时，杜甫正在长安。叛乱消息传来后，杜甫带着妻子和孩子逃离长安，开始了长达十五年的流亡生活。这一逃难经历使杜甫亲身体验了战争带来的恐慌和动荡，也见证了底层百姓的苦难，成为其后来创作的重要素材。</p>
+                                    </div>
+                                </div>
+                                <div class="exile-event">
+                                    <div class="event-year">756年</div>
+                                    <div class="event-content">
+                                        <h4>羌村避难与被俘长安</h4>
+                                        <p>杜甫辗转至鄜州羌村避难，生活艰辛。听闻肃宗在灵武即位后，杜甫决定北上投奔肃宗行在，途中不幸为叛军俘虏，被押送回已被安禄山占领的长安。</p>
+                                        <p>被囚长安期间，杜甫亲历国都沦陷的惨状，城中"家家有老小，各在一处啼"。在这段痛苦的日子里，他创作了著名的《春望》，以"国破山河在，城春草木深"开篇，表达了对国家命运的深切忧虑。</p>
+                                    </div>
+                                </div>
+                                <div class="exile-event">
+                                    <div class="event-year">757年</div>
+                                    <div class="event-content">
+                                        <h4>脱险与初任官职</h4>
+                                        <p>757年初，杜甫从长安脱逃，终于抵达肃宗行在。因其才学和忠诚，杜甫被唐肃宗任命为左拾遗，可以直接向皇帝进言。初入仕途的杜甫满怀抱负，但刚直不阿的性格使他很快在官场中陷入困境。他为遭贬谪的名将房琯请求平反，触怒了以宦官李辅国为首的当权派。</p>
+                                    </div>
+                                </div>
+                                <div class="exile-event">
+                                    <div class="event-year">758年</div>
+                                    <div class="event-content">
+                                        <h4>贬官与"三吏三别"</h4>
+                                        <p>由于直言敢谏，杜甫很快被贬为华州司功参军，远离政治中心。在华州任职期间，他创作了著名的"三吏"（《石壕吏》《新安吏》《潼关吏》）和"三别"（《新婚别》《无家别》《垂老别》）组诗，揭露了战争给底层民众带来的苦难，体现了杜甫深沉的人道主义关怀。</p>
+                                    </div>
+                                </div>
+                                <div class="exile-event">
+                                    <div class="event-year">759年</div>
+                                    <div class="event-content">
+                                        <h4>弃官西行</h4>
+                                        <p>在华州任职不久，杜甫便辞官离去。这一决定源于他对朝廷政治的失望，也因其家庭生计所迫。离职后，杜甫带着家人向西行进，先后经过秦州、同谷等地，一家人饱受饥寒之苦。在秦州期间，他创作了《秦州杂诗》组诗，记录了当地战后的凄凉景象。</p>
+                                    </div>
+                                </div>
+                                <div class="exile-event">
+                                    <div class="event-year">760-765年</div>
+                                    <div class="event-content">
+                                        <h4>成都草堂岁月</h4>
+                                        <p>760年，在友人严武（时任剑南节度使）的帮助下，杜甫携家迁居成都，在浣花溪畔建造了著名的"杜甫草堂"。这是杜甫漂泊生涯中难得的安定时期，他创作了《茅屋为秋风所破歌》等名作，表达了"安得广厦千万间，大庇天下寒士俱欢颜"的理想。这段时期杜甫创作了大量反映社会现实的作品，同时也有不少描写自然风光和日常生活的诗篇，如《春夜喜雨》《绝句》等，艺术风格更加多样化。</p>
+                                    </div>
+                                </div>
+                                <div class="exile-event">
+                                    <div class="event-year">765-770年</div>
+                                    <div class="event-content">
+                                        <h4>最后的漂泊与诗歌巅峰</h4>
+                                        <p>765年，严武去世后，杜甫失去依靠，再次开始漂泊生活。他先后流寓梓州、阆州、夔州等地。在夔州期间（766-768年），他的诗歌创作达到艺术巅峰，《登高》《秋兴八首》等代表作相继问世。"沉郁顿挫"的诗歌风格在这一时期臻于完美，既有对自然风景的精妙描绘，又有对个人命运和社会现实的深刻反思。</p>
+                                        <p>768年后，年迈的杜甫继续南下，经云安、江陵，最终抵达岳州和潭州。这段最后的旅程尤为艰辛，杜甫疾病缠身，生活异常困难。770年春，杜甫病逝于湘江舟中，享年58岁。他终其一生，颠沛流离，未能实现济世安民的理想，但他的诗歌却成为安史之乱这段历史最真实、最有力的见证，被后世誉为"诗史"。</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="suffering-quote">
+                                <blockquote>
+                                    <p>"杜甫在其诗中记录了人生、社会、历史现实，以时代的冷暖凝结为个体的生命体验，其诗歌中折射的不只是一个时代，而是恒久的人类命运。"</p>
+                                    <cite>——叶嘉莹《杜甫诗学》</cite>
+                                </blockquote>
+                                <p>安史之乱伴随了杜甫人生中最重要的十五年，这段战乱的经历深刻地塑造了他的诗歌风格和思想情怀。从长安到湘江，从失意官场到漂泊江湖，杜甫既是时代的见证者，也是苦难的亲历者，他的诗歌超越了时代的局限，成为中国文学史上永恒的经典。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="dufu-poetry-container">
+                            <h3>诗词创作的转型与深化</h3>
+                            
+                            <div class="creation-transition">
+                                <div class="transition-item">
+                                    <h4>创作主题的改变</h4>
+                                    <p>安史之乱前，杜甫诗歌多以咏物、抒怀、边塞风光为主题，追求"致君尧舜上，再使风俗淳"的理想。</p>
+                                    <p>战乱后，其创作主题显著转向国家危亡、民生疾苦与社会批判，如《三吏》《三别》组诗，直面战争带来的征兵、离别、饥饿等社会问题。</p>
+                                    <p>杜甫从一个追求个人功名的文人，转变为深切关注民众苦难的人道主义诗人，创作上实现了从表面到内核的深化。</p>
+                                </div>
+                                
+                                <div class="transition-item">
+                                    <h4>忧国忧民情怀的深化</h4>
+                                    <p>安史之乱使杜甫的爱国忧民情怀得到升华，体现了如同后世范仲淹所言"先天下之忧而忧，后天下之乐而乐"的人格境界。</p>
+                                    <p>他的诗歌一方面反映了对国家命运的深切忧虑："国破山河在，城春草木深"；另一方面表达了对民众苦难的深刻同情："朱门酒肉臭，路有冻死骨"。</p>
+                                    <p>这种对时代和人民的责任感，使杜甫超越了个人得失，成为中国古代最具社会良知的诗人。</p>
+                                </div>
+                                
+                                <div class="transition-item">
+                                    <h4>诗歌艺术风格的成熟</h4>
+                                    <p>在艺术表现上，安史之乱后杜甫形成了独特的"沉郁顿挫"风格。"沉郁"体现在内容上沉重郁闷，忧国忧民；"顿挫"体现在艺术形式上的曲折跌宕、意象丰富。</p>
+                                    <p>他大量创新运用比兴、对仗、用典等手法，语言既华丽严整又沉郁深沉，既有对客观现实的真实描绘，又有对内心情感的深刻抒发。</p>
+                                    <p>这一时期杜甫已完全超越了初唐以来格律诗的表现局限，将唐诗艺术推向了新的高度。</p>
+                                </div>
+                            </div>
+                            
+                            <div class="poetry-showcase">
+                                <h4>杜甫战乱诗的<br>深度分析</h4>
+                                
+                                <div class="poetry-list">
+                                    <div class="poetry-item">
+                                        <h4>《三吏》之《石壕吏》</h4>
+                                        <div class="poem-content">
+                                            <p>暮投石壕村，有吏夜捉人。</p>
+                                            <p>老翁逾墙走，老妇出门看。</p>
+                                            <p>吏呼一何怒！妇啼一何苦！</p>
+                                            <p>听妇前致词：三男邺城戍。</p>
+                                            <p>一男附书至，二男新战死。</p>
+                                            <p>存者且偷生，死者长已矣。</p>
+                                            <p>室中更无人，惟有乳下孙。</p>
+                                            <p>有孙母未去，出入无完裙。</p>
+                                            <p>老妪力虽衰，请从吏夜归。</p>
+                                            <p>急应河阳役，犹得备晨炊。</p>
+                                            <p>夜久语声绝，如闻泣幽咽。</p>
+                                            <p>天明登前途，独与老翁别。</p>
+                                        </div>
+                                        <div class="poem-analysis">
+                                            <p>《石壕吏》是杜甫安史之乱后创作的现实主义名篇，通过一个普通农村家庭的悲剧，深刻揭示了战争给底层民众带来的苦难。诗中描写了征兵官吏夜间强行征兵的场景，老妇一家三个儿子，两个已经战死，剩下一个"偷生"，而官吏仍要征召其进军。</p>
+                                            <p>这首诗艺术手法上采用叙事与对话相结合的方式，通过"吏呼一何怒！妇啼一何苦！"的对比，展现统治阶级的残暴与平民的无助。杜甫以冷静客观的笔触记录下这一切，却蕴含着强烈的人道主义关怀，反映了诗人成熟的艺术手法和深厚的社会责任感。</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="poetry-item">
+                                        <h4>《春望》</h4>
+                                        <div class="poem-content">
+                                            <p>国破山河在，城春草木深。</p>
+                                            <p>感时花溅泪，恨别鸟惊心。</p>
+                                            <p>烽火连三月，家书抵万金。</p>
+                                            <p>白头搔更短，浑欲不胜簪。</p>
+                                        </div>
+                                        <div class="poem-analysis">
+                                            <p>《春望》写于杜甫被困长安期间，短短八句诗浓缩了国破家亡的巨大悲剧。首联"国破山河在，城春草木深"以景写情，对比国家破败与自然常在的反差，寓含深沉悲哀；颔联"感时花溅泪，恨别鸟惊心"将自然景物人格化，表达诗人强烈的家国之痛；颈联"烽火连三月，家书抵万金"直接描写战争现实和离乱之苦；尾联"白头搔更短，浑欲不胜簪"则回到个人，表达诗人的无力感与绝望。</p>
+                                            <p>这首诗体现了杜甫诗歌艺术的成熟：意象丰富而深刻，结构严谨而富于变化，语言凝练而情感深厚。从忧国到忧民，从家到国，从个人到社会，诗人将个人情感与民族命运紧密结合，显示出杜甫作为"诗史"创作者的非凡才能和社会担当。</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="dufu-impact">
+                            <h3>杜甫与中国诗歌传统</h3>
+                            
+                            <div class="impact-items">
+                                <div class="impact-item">
+                                    <h4>"诗史"传统的确立</h4>
+                                    <p>杜甫借诗歌记录历史、反映现实的创作方式，为中国诗歌开创了"诗史"传统，影响了后世千年文学创作方向。</p>
+                                </div>
+                                <div class="impact-item">
+                                    <h4>人道主义精神</h4>
+                                    <p>杜甫以"先天下之忧而忧"的胸怀，将儒家"仁政"理想与对民生疾苦的关注结合，树立了中国文人介入现实、担当道义的典范。</p>
+                                </div>
+                                <div class="impact-item">
+                                    <h4>诗歌技法革新</h4>
+                                    <p>杜甫将律诗、绝句等形式发挥到极致，在音律、意象、结构等方面的创新，使唐诗艺术臻于完美，被称为"诗圣"，影响历代文学创作。</p>
+                                </div>
+                                <div class="impact-item">
+                                    <h4>历史见证的价值</h4>
+                                    <p>杜甫诗歌是了解安史之乱时期社会状况的重要史料，其作品中记录的战争场景、民生困苦、社会矛盾比正史更为生动真实。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-logo">安史之乱</div>
+            <p class="footer-desc">唐王朝由盛转衰的历史转折点</p>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <div class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- 引入JS库 -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <!-- 自定义脚本 -->
+    <script src="scripts.js"></script>
+</body>
+</html> 
