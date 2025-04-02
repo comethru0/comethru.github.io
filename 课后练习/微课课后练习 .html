@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>杜甫人生三境·文史闯关</title>
+    <style>
+        body {
+            font-family: "楷体", cursive;
+            background: #f3e9d2;
+            color: #3e2723;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            background-image: url('https://img.zcool.cn/community/01a5ea5b8788c2a80121ad4738a5f0.jpg@1280w_1l_2o_100sh.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 25px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        .stage {
+            margin-bottom: 30px;
+            border-bottom: 2px solid #8d6e63;
+            padding-bottom: 20px;
+        }
+        .question {
+            margin: 15px 0;
+            padding: 15px;
+            background: #fff8f0;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        .correct {
+            background: #e8f5e9;
+        }
+        .incorrect {
+            background: #ffebee;
+            animation: pulse 0.5s;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        button {
+            background: #8d6e63;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #6d4c41;
+            transform: scale(1.05);
+        }
+        #score {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #fff3e0;
+            padding: 10px 20px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            color: #6d4c41;
+        }
+        .highlight {
+            position: relative;
+            z-index: 10;
+        }
+        .highlight::after {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid #ff5722;
+            border-radius: 7px;
+            animation: borderPulse 2s infinite;
+        }
+        @keyframes borderPulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        .retry-btn {
+            background: #ff9800;
+            margin-top: 10px;
+        }
+        .next-stage-btn {
+            background: #4caf50;
+            margin-top: 10px;
+        }
+        .complete-btn {
+            background: #9c27b0;
+            margin-top: 10px;
+        }
+        .answer-feedback {
+            color: #2e7d32;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        .correct-answer {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        .review-panel {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .review-container {
+            display: none;
+            margin-top: 20px;
+        }
+        .stage-selector {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .stage-btn {
+            margin: 0 10px;
+            padding: 8px 15px;
+            background: #8d6e63;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .stage-btn.active {
+            background: #6d4c41;
+        }
+    </style>
+</head>
+<body>
+    <div id="score">当前得分：0</div>
+    <div class="container" id="gameContainer"></div>
+    <div class="container review-container" id="reviewContainer"></div>
+
+<script>
+// 基于微课稿的三阶段题库（每阶段10题）
+const stages = [
+    { // 青年壮志（10题）
+        title: "🎋 裘马轻狂·少年意气",
+        questions: [
+            {
+                type: "choice",
+                question: "杜甫24岁科举落第后创作的代表作是？",
+                options: ["《望岳》","《春望》","《登高》"],
+                answer: 0,
+                explanation: "《望岳》是杜甫青年时期的代表作，展现了豪迈气概"
+            },
+            {
+                type: "judge",
+                question: "《望岳》中'会当凌绝顶'仅表达登山愿望，没有政治隐喻。",
+                answer: false,
+                explanation: "此句暗含诗人攀登事业高峰的政治抱负"
+            },
+            {
+                type: "choice",
+                question: "反映盛唐气象的杜甫青年诗作是：",
+                options: ["《饮中八仙歌》","《兵车行》","《石壕吏》"],
+                answer: 0,
+                explanation: "《饮中八仙歌》描绘了盛唐文人的豪放生活"
+            },
+            {
+                type: "choice",
+                question: "杜甫早期政治理想的直接表达是：",
+                options: ["致君尧舜上，再使风俗淳","朱门酒肉臭，路有冻死骨","安得广厦千万间"],
+                answer: 0,
+                explanation: "这两句诗直接表达了杜甫的政治理想"
+            },
+            {
+                type: "judge",
+                question: "杜甫青年时期诗歌以沉郁顿挫风格为主。",
+                answer: false,
+                explanation: "沉郁顿挫是杜甫中晚年形成的风格"
+            },
+            {
+                type: "choice",
+                question: "杜甫青年时期漫游齐赵时创作的诗句是：",
+                options: ["会当凌绝顶，一览众山小","感时花溅泪，恨别鸟惊心","星垂平野阔，月涌大江流"],
+                answer: 0,
+                explanation: "这是《望岳》中的名句，作于漫游时期"
+            },
+            {
+                type: "judge",
+                question: "杜甫在《奉赠韦左丞丈二十二韵》中表达了怀才不遇的愤懑。",
+                answer: true,
+                explanation: "诗中'纨绔不饿死，儒冠多误身'等句可见"
+            },
+            {
+                type: "choice",
+                question: "以下哪项不是杜甫青年时期的特征？",
+                options: ["裘马轻狂","忧国忧民","豪放不羁"],
+                answer: 1,
+                explanation: "忧国忧民是杜甫中晚年诗歌的主要特征"
+            },
+            {
+                type: "choice",
+                question: "杜甫早期诗歌受哪位诗人影响最深？",
+                options: ["李白","屈原","陶渊明"],
+                answer: 0,
+                explanation: "杜甫与李白交游密切，早期诗风受其影响"
+            },
+            {
+                type: "judge",
+                question: "杜甫青年时期已经形成了现实主义的创作风格。",
+                answer: false,
+                explanation: "现实主义风格是在安史之乱后成熟的"
+            }
+        ]
+    },
+    { // 中年疾呼（10题）
+        title: "⚔️ 朱门剑鸣·乱世悲歌",
+        questions: [
+            {
+                type: "choice",
+                question: "《丽人行》中对比描写的两个社会群体是：",
+                options: ["将士与百姓","权贵与饥民","僧侣与平民"],
+                answer: 1,
+                explanation: "通过杨氏兄妹的奢华揭露社会不公"
+            },
+            {
+                type: "judge",
+                question: "《自京赴奉先县咏怀五百字》包含'朱门酒肉臭'名句。",
+                answer: true,
+                explanation: "这是杜甫现实主义诗歌的代表作之一"
+            },
+            {
+                type: "choice",
+                question: "杜甫创作'三吏三别'的历史背景是：",
+                options: ["开元盛世","安史之乱","藩镇割据"],
+                answer: 1,
+                explanation: "这组诗深刻反映了安史之乱给人民带来的苦难"
+            },
+            {
+                type: "choice",
+                question: "《春望》中'感时花溅泪'的'时'指：",
+                options: ["季节变换","国家危难","个人衰老"],
+                answer: 1,
+                explanation: "诗人因国家残破而感伤落泪"
+            },
+            {
+                type: "judge",
+                question: "杜甫在长安十年始终关注个人仕途得失。",
+                answer: false,
+                explanation: "此期创作已开始关注社会现实"
+            },
+            {
+                type: "choice",
+                question: "《兵车行》反映的社会问题是：",
+                options: ["宦官专权","连年征战","土地兼并"],
+                answer: 1,
+                explanation: "揭露唐玄宗长期开边战争给人民带来的痛苦"
+            },
+            {
+                type: "judge",
+                question: "杜甫在安史之乱中被叛军俘虏后逃脱。",
+                answer: true,
+                explanation: "杜甫曾被叛军俘至长安，后冒险逃出"
+            },
+            {
+                type: "choice",
+                question: "以下哪首诗不属于杜甫中年时期的作品？",
+                options: ["《月夜》","《羌村三首》","《登岳阳楼》"],
+                answer: 2,
+                explanation: "《登岳阳楼》是杜甫晚年漂泊湖南时的作品"
+            },
+            {
+                type: "choice",
+                question: "杜甫中年时期诗歌创作的主要特点是：",
+                options: ["浪漫主义色彩浓厚","现实主义风格成熟","形式主义倾向明显"],
+                answer: 1,
+                explanation: "安史之乱促使杜甫现实主义创作达到高峰"
+            },
+            {
+                type: "judge",
+                question: "杜甫中年时期的诗歌主要描写个人生活琐事。",
+                answer: false,
+                explanation: "此期诗歌多反映社会现实和人民疾苦"
+            }
+        ]
+    },
+    { // 暮年长歌（10题）
+        title: "🌾 草堂秋风·仁者之光",
+        questions: [
+            {
+                type: "choice",
+                question: "《茅屋为秋风所破歌》的核心思想是：",
+                options: ["个人困苦","自然赞美","济世情怀"],
+                answer: 2,
+                explanation: "'安得广厦千万间'体现博大胸怀"
+            },
+            {
+                type: "judge",
+                question: "《秋兴八首》标志着杜甫七律艺术的成熟。",
+                answer: true,
+                explanation: "这组七律是杜甫晚年律诗的代表作"
+            },
+            {
+                type: "choice",
+                question: "杜甫被称为'诗史'主要是因为：",
+                options: ["记录典章制度","反映社会实况","描写宫廷生活"],
+                answer: 1,
+                explanation: "他的诗真实记录了唐代由盛转衰的历史"
+            },
+            {
+                type: "choice",
+                question: "杜甫晚年思想境界的集中体现是：",
+                options: ["会当凌绝顶","大庇天下寒士","国破山河在"],
+                answer: 1,
+                explanation: "体现了推己及人、忧国忧民的情怀"
+            },
+            {
+                type: "judge",
+                question: "《江南逢李龟年》是杜甫晚年绝句代表作。",
+                answer: true,
+                explanation: "这首七绝含蓄深沉，寓慨叹于叙事之中"
+            },
+            {
+                type: "choice",
+                question: "杜甫晚年漂泊西南时期的创作特点是：",
+                options: ["雄浑豪放","沉郁顿挫","清新自然"],
+                answer: 1,
+                explanation: "诗风更加沉郁顿挫、苍劲悲凉"
+            },
+            {
+                type: "judge",
+                question: "《登高》被誉为'古今七律第一'。",
+                answer: true,
+                explanation: "此诗格律精严，意境深远，堪称七律典范"
+            },
+            {
+                type: "choice",
+                question: "杜甫晚年的哪首诗表达了对诸葛亮的敬仰？",
+                options: ["《蜀相》","《客至》","《绝句》"],
+                answer: 0,
+                explanation: "'出师未捷身先死'表达了对诸葛亮的惋惜"
+            },
+            {
+                type: "choice",
+                question: "以下哪项最能体现杜甫晚年诗歌的艺术成就？",
+                options: ["语言通俗","格律严谨","想象奇特"],
+                answer: 1,
+                explanation: "杜甫晚年在律诗格律上达到炉火纯青的境界"
+            },
+            {
+                type: "judge",
+                question: "杜甫在夔州时期创作数量减少，质量下降。",
+                answer: false,
+                explanation: "夔州时期是杜甫创作的又一个高峰"
+            }
+        ]
+    }
+];
+
+let currentStage = 0;
+let totalScore = 0;
+let firstErrorId = null;
+let hasErrors = false;
+let userAnswers = []; // 记录用户答案
+let allCorrect = false; // 标记是否全部答对
+let stageScores = [0, 0, 0]; // 记录每个阶段的得分
+let gameCompleted = false; // 标记游戏是否完成
+
+function renderStage(stageIndex) {
+    const stage = stages[stageIndex];
+    let html = `
+        <div class="stage">
+            <h2 style="color:#6d4c41; text-align:center">${stage.title}</h2>
+    `;
+    
+    stage.questions.forEach((q, index) => {
+        // 检查是否已有用户答案
+        const userAnswer = userAnswers[stageIndex] ? userAnswers[stageIndex][index] : null;
+        const isCorrect = userAnswer !== null && userAnswer === q.answer;
+        
+        html += `
+            <div class="question ${isCorrect ? 'correct' : ''}" id="q${index}">
+                <p>${index+1}. ${q.question}</p>
+                ${q.type === "choice" ? 
+                    q.options.map((opt, i) => `
+                        <label>
+                            <input type="radio" name="q${index}" value="${i}" 
+                                ${userAnswer === i ? 'checked' : ''}
+                                ${userAnswer !== null || gameCompleted ? 'disabled' : ''}>
+                            ${opt}
+                        </label><br>
+                    `).join('') : 
+                    `
+                    <label><input type="radio" name="q${index}" value="true" 
+                        ${userAnswer === true ? 'checked' : ''}
+                        ${userAnswer !== null || gameCompleted ? 'disabled' : ''}> 正确</label>
+                    <label><input type="radio" name="q${index}" value="false" 
+                        ${userAnswer === false ? 'checked' : ''}
+                        ${userAnswer !== null || gameCompleted ? 'disabled' : ''}> 错误</label>
+                    `
+                }
+                ${userAnswer !== null || gameCompleted ? 
+                    `<div class="answer-feedback">${isCorrect ? '✓ 回答正确' : '✗ 回答错误'}: <span class="${isCorrect ? '' : 'correct-answer'}">${
+                        q.type === "choice" ? q.options[q.answer] : q.answer ? "正确" : "错误"
+                    }</span><br>${q.explanation}</div>` : ''}
+            </div>
+        `;
+    });
+
+    if (gameCompleted) {
+        html += `
+            <button onclick="showReview()">查看全部题目</button>
+            <button class="complete-btn" onclick="completeChallenge()">完成挑战</button>
+        `;
+    } else if (hasErrors) {
+        html += `
+            <button class="retry-btn" onclick="resetStage(${stageIndex})">重新作答错误题目</button>
+            ${stageIndex < 2 ? 
+                `<button onclick="nextStage(${stageIndex})">进入下一关</button>` : 
+                `<button class="complete-btn" onclick="completeAllStages()">完成全部题目</button>`}
+        `;
+    } else if (allCorrect) {
+        html += `
+            <div class="review-panel">
+                <p>🎉 恭喜您全部答对！请查看题目解析后继续</p>
+                ${stageIndex < 2 ? 
+                    `<button class="next-stage-btn" onclick="nextStage(${stageIndex})">进入下一关</button>` : 
+                    `<button class="complete-btn" onclick="completeAllStages()">完成全部题目</button>`}
+            </div>
+        `;
+    } else {
+        html += `<button onclick="checkAnswers(${stageIndex})">提交本关答案</button>`;
+    }
+    
+    document.getElementById("gameContainer").innerHTML = html;
+}
+
+function resetStage(stageIndex) {
+    // 只重置错误题目的答案
+    const stage = stages[stageIndex];
+    stage.questions.forEach((q, index) => {
+        if (userAnswers[stageIndex] && userAnswers[stageIndex][index] !== q.answer) {
+            userAnswers[stageIndex][index] = null;
+        }
+    });
+    hasErrors = false;
+    allCorrect = false;
+    renderStage(stageIndex);
+}
+
+function completeAllStages() {
+    gameCompleted = true;
+    renderStage(currentStage);
+}
+
+function completeChallenge() {
+    const finalComment = totalScore >= 135 ? "学富五车！" : 
+                       totalScore >= 120 ? "博学多才！" :
+                       totalScore >= 90 ? "略有小成！" : "再接再厉！";
+    
+    // 创建思考题HTML
+    const reflectionHtml = `
+        <div class="container" style="margin-top: 20px;">
+            <h2 style="color:#6d4c41; text-align:center">🌟 课后思考与延伸</h2>
+            
+            <div class="question" style="background:#e1f5fe;">
+                <h3>思考题一：古今对话</h3>
+                <p>鲁迅说："杜甫似乎不是古人，就好像今天还活在我们堆里似的。"请结合微课中提到的现代非遗传承事例（如巩义剪纸、杜甫文化器型复刻等），思考：</p>
+                <ol>
+                    <li>当代社会有哪些与杜甫"安得广厦千万间"精神一脉相承的现象？</li>
+                    <li>如果你要设计一个现代艺术项目传承杜甫精神，会采用什么形式？为什么？</li>
+                </ol>
+                <p><strong>建议：</strong></p>
+                <ul>
+                    <li>可采访身边长辈或查阅新闻，列举1-2个具体案例</li>
+                    <li>参考当代艺术形式如数字媒体艺术、沉浸式戏剧等创新表达方式</li>
+                </ul>
+            </div>
+            
+            <div class="question" style="background:#f1f8e9;">
+                <h3>思考题二：诗圣的现代回响</h3>
+                <p>BBC推出的纪录片《杜甫：中国最伟大的诗人》向西方介绍了杜甫诗歌，引发热议。杜甫诗作展现了历史温情、博爱与力量，在2023年疫情期间尤其凸显人类命运共同体理念。请结合本纪录片及相关讨论，围绕"杜甫精神的现实意义及其对当代青年的影响"这一主题，写一篇短文（字数不限），体现你的思考与见解。</p>
+                <p><strong>建议：</strong></p>
+                <ul>
+                    <li>观看BBC纪录片《杜甫：中国最伟大的诗人》及相关评论</li>
+                    <li>结合疫情中的感人事迹，思考杜甫"仁爱"精神的现代表达</li>
+                    <li>可从国际视角分析杜甫诗歌中的人类共同价值</li>
+                    <li>思考作为当代青年如何传承杜甫的社会责任感</li>
+                </ul>
+                <p style="font-style:italic; color:#666;">注：本题为开放性思考题，不设标准答案，请尽情表达你的见解。</p>
+            </div>
+            
+            <div style="text-align:center; margin-top:30px;">
+                <p>🎉 闯关完成！最终得分：${totalScore}/150</p>
+                <p style="font-size:1.2em; color:#d81b60;">${finalComment}</p>
+                <p>杜甫精神永存！期待你在课后思考题中的精彩表现。</p>
+                <button onclick="location.reload()" style="background:#26a69a;">重新开始挑战</button>
+            </div>
+        </div>
+    `;
+    
+    // 替换游戏容器内容
+    document.getElementById("gameContainer").innerHTML = reflectionHtml;
+    document.getElementById("reviewContainer").style.display = "none";
+    document.getElementById("score").style.display = "none";
+}
+
+function nextStage(stageIndex) {
+    if (stageIndex < 2) {
+        currentStage++;
+        hasErrors = false;
+        allCorrect = false;
+        renderStage(currentStage);
+    }
+}
+
+function checkAnswers(stageIndex) {
+    if (!userAnswers[stageIndex]) {
+        userAnswers[stageIndex] = [];
+    }
+
+    let correctCount = 0;
+    const stage = stages[stageIndex];
+    firstErrorId = null;
+    hasErrors = false;
+    allCorrect = false;
+    
+    stage.questions.forEach((q, index) => {
+        const questionDiv = document.getElementById(`q${index}`);
+        let userAnswer;
+        
+        if(q.type === "choice") {
+            const selected = document.querySelector(`input[name="q${index}"]:checked`);
+            userAnswer = selected ? parseInt(selected.value) : null;
+        } else {
+            const selected = document.querySelector(`input[name="q${index}"]:checked`);
+            userAnswer = selected ? (selected.value === "true") : null;
+        }
+
+        // 保存用户答案
+        userAnswers[stageIndex][index] = userAnswer;
+
+        if(userAnswer === q.answer) {
+            correctCount++;
+        } else {
+            hasErrors = true;
+            // 记录第一条错误的题目ID
+            if (firstErrorId === null) {
+                firstErrorId = `q${index}`;
+            }
+        }
+    });
+
+    // 更新当前阶段得分
+    stageScores[stageIndex] = correctCount * 5;
+    
+    // 重新计算总分
+    totalScore = stageScores.reduce((sum, score) => sum + score, 0);
+    
+    document.getElementById("score").textContent = `当前得分：${totalScore}`;
+    
+    // 检查是否全部答对
+    allCorrect = !hasErrors;
+    
+    // 重新渲染以显示反馈
+    renderStage(stageIndex);
+    
+    // 如果有错误，滚动到第一条错误题目
+    if (firstErrorId !== null) {
+        setTimeout(() => {
+            const errorElement = document.getElementById(firstErrorId);
+            errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            errorElement.classList.add("highlight");
+            
+            alert(`本关得分：${stageScores[stageIndex]}/50\n请查看标记的错误题目！`);
+        }, 100);
+    } else {
+        alert(`🎉 恭喜您全部答对！得分为${stageScores[stageIndex]}/50\n请查看题目解析后继续`);
+    }
+}
+
+function showReview() {
+    document.getElementById("gameContainer").style.display = "none";
+    document.getElementById("reviewContainer").style.display = "block";
+    
+    let html = `
+        <h2 style="color:#6d4c41; text-align:center">📚 全部题目回顾</h2>
+        <div class="stage-selector">
+            ${stages.map((stage, index) => `
+                <button class="stage-btn ${index === 0 ? 'active' : ''}" onclick="showReviewStage(${index})">
+                    ${stage.title}
+                </button>
+            `).join('')}
+        </div>
+        <div id="reviewStageContent"></div>
+        <button onclick="backToGame()">返回答题界面</button>
+    `;
+    
+    document.getElementById("reviewContainer").innerHTML = html;
+    showReviewStage(0);
+}
+
+function showReviewStage(stageIndex) {
+    const stage = stages[stageIndex];
+    let html = `
+        <h3 style="text-align:center; color:#5d4037">${stage.title}</h3>
+    `;
+    
+    stage.questions.forEach((q, index) => {
+        const userAnswer = userAnswers[stageIndex] ? userAnswers[stageIndex][index] : null;
+        const isCorrect = userAnswer !== null && userAnswer === q.answer;
+        
+        html += `
+            <div class="question ${isCorrect ? 'correct' : 'incorrect'}">
+                <p>${index+1}. ${q.question}</p>
+                <p>你的答案: <strong>${userAnswer !== null ? 
+                    (q.type === "choice" ? q.options[userAnswer] : userAnswer ? "正确" : "错误") : 
+                    "未作答"}</strong></p>
+                <p>正确答案: <strong class="correct-answer">${
+                    q.type === "choice" ? q.options[q.answer] : q.answer ? "正确" : "错误"
+                }</strong></p>
+                <div class="answer-feedback">解析: ${q.explanation}</div>
+            </div>
+        `;
+    });
+    
+    document.getElementById("reviewStageContent").innerHTML = html;
+    
+    // 更新活动标签样式
+    document.querySelectorAll('.stage-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.querySelectorAll('.stage-btn')[stageIndex].classList.add('active');
+}
+
+function backToGame() {
+    document.getElementById("gameContainer").style.display = "block";
+    document.getElementById("reviewContainer").style.display = "none";
+    renderStage(currentStage);
+}
+
+// 初始化游戏
+renderStage(0);
+</script>
+</body>
+</html>
